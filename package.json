@@ -1,0 +1,52 @@
+{
+  "name": "nodejs-ts-template",
+  "version": "v2.0.0",
+  "description": "Template for Node.js with TypeScript and esbuild",
+  "main": "./src/main.ts",
+  "scripts": {
+    "test": "echo \"crea test pls\"",
+    "dev": "nodemon ./src/main.ts",
+    "lint": "ts-standard",
+    "tsc": "tsc",
+    "start": "node build/build/main.js",
+    "build": "tsc --build tsconfig.json",
+    "build:watch": "tsc --build tsconfig.json --watch",
+    "build:bundle": "tsc --build tsconfig.json && esbuild ./build/build/main.js --bundle --outfile=./build/bundle/main.js --minify --allow-overwrite --platform=node --target=node16",
+    "clean": "make clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rolchrissa/nodejs-ts-template.git"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "esbuild"
+  ],
+  "author": "ChrisRol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rolchrissa/nodejs-ts-template/issues"
+  },
+  "homepage": "https://github.com/Rolchrissa/nodejs-ts-template",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.35",
+    "esbuild": "^0.15.7",
+    "nodemon": "2.0.16",
+    "ts-node": "10.8.0",
+    "ts-node-dev": "1.1.8",
+    "ts-standard": "11.0.0",
+    "typescript": "4.7.2"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "./node_modules/ts-standard/config/ts-standard.json"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "execMap": {
+    "ts": "ts-node"
+  },
+  "ignore": [
+    "node_modules"
+  ],
+  "watch": [
+    "src"
+  ],
+  "ext": "ts,json,js,env",
+  "restartable": "rs",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
