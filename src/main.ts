@@ -37,7 +37,7 @@ const renameFieldInLatestDocument = async (): Promise<void> => {
     if (recentDocument.length > 0) {
       const document = recentDocument[0];
       console.log(
-        `Documento encontrado con el ${validationField}: ${
+        `Document found with the ${validationField}: ${
           document[`${validationField}`]
         }`
       );
@@ -60,10 +60,10 @@ const renameFieldInLatestDocument = async (): Promise<void> => {
           { $rename: { [oldField]: newField } }
         );
 
-        console.log("Campo renombrado exitosamente.");
+        console.log("Field renamed successfully.");
       }
     } else {
-      console.log("No se encontró ningún documento.");
+      console.log("No document found.");
     }
   } catch (error) {
     console.error("Error:", error);
