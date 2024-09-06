@@ -1,10 +1,10 @@
 {
   "name": "rename-prop-mongo",
-  "version": "0.0.3",
+  "version": "0.0.10",
   "description": "Rename a property in a MongoDB collection",
-  "main": "./build/build/main.js",
+  "main": "./build/bundle/main.js",
   "bin": {
-    "rename-prop-mongo": "build/build/main.js"
+    "rename-prop-mongo": "build/bundle/main.js"
   },
   "scripts": {
     "test": "echo \"crea test pls\"",
@@ -35,7 +35,8 @@
   "homepage": "https://github.com/chrisRol2/renamePropMongo",
   "dependencies": {
     "dotenv": "^16.0.1",
-    "mongodb": "6.8.0"
+    "mongodb": "6.8.0",
+    "yargs": "17.7.2"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
