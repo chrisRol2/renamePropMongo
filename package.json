@@ -1,6 +1,6 @@
 {
   "name": "rename-prop-mongo",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "description": "Rename a property in a MongoDB collection",
   "main": "./build/build/main.js",
   "bin": {
