@@ -1,10 +1,10 @@
 {
   "name": "rename-prop-mongo",
-  "version": "v0.0.2",
+  "version": "0.0.2",
   "description": "Rename a property in a MongoDB collection",
   "main": "./build/build/main.js",
   "bin": {
-    "rename-prop-mongo": "./build/build/main.js"
+    "rename-prop-mongo": "build/build/main.js"
   },
   "scripts": {
     "test": "echo \"crea test pls\"",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chrisRol2/renamePropMongo.git"
+    "url": "git+https://github.com/chrisRol2/renamePropMongo.git"
   },
   "keywords": [
     "typescript",
