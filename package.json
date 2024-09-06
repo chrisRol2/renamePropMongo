@@ -1,8 +1,11 @@
 {
-  "name": "nodejs-ts-template",
-  "version": "v2.0.0",
-  "description": "Template for Node.js with TypeScript and esbuild",
-  "main": "./src/main.ts",
+  "name": "rename-prop-mongo",
+  "version": "v0.0.1",
+  "description": "Rename a property in a MongoDB collection",
+  "main": "./build/build/main.js",
+  "bin": {
+    "rename-prop-mongo": "./build/build/main.js"
+  },
   "scripts": {
     "test": "echo \"crea test pls\"",
     "dev": "nodemon ./src/main.ts",
@@ -16,19 +19,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Rolchrissa/nodejs-ts-template.git"
+    "url": "https://github.com/chrisRol2/renamePropMongo.git"
   },
   "keywords": [
     "typescript",
     "nodejs",
-    "esbuild"
+    "esbuild",
+    "mongodb"
   ],
   "author": "ChrisRol",
-  "license": "ISC",
+  "license": "CC-BY-ND-4.0",
   "bugs": {
-    "url": "https://github.com/Rolchrissa/nodejs-ts-template/issues"
+    "url": "https://github.com/chrisRol2/renamePropMongo/issues"
   },
-  "homepage": "https://github.com/Rolchrissa/nodejs-ts-template",
+  "homepage": "https://github.com/chrisRol2/renamePropMongo",
   "dependencies": {
     "dotenv": "^16.0.1",
     "mongodb": "6.8.0"
