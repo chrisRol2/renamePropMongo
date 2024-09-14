@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
 import * as readline from "readline";
+import { RenameFieldInLatestDocumentOptions } from "./types";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -16,15 +17,22 @@ const askQuestion = (question: string): Promise<string> => {
   });
 };
 
-interface RenameFieldInLatestDocumentOptions {
-  MONGODB_URI: string;
-  DB_NAME: string;
-  COLLECTION_NAME: string;
-  DATE_FIELD: string;
-  OLD_FIELD: string;
-  NEW_FIELD: string;
-  VALIDATION_FIELD: string;
-}
+/**
+ * interactive renames a field in the latest document of a collection.
+ * @param {RenameFieldInLatestDocumentOptions} options - Options for renaming a field in the latest document.
+ * @returns {Promise<void>}
+ * @example
+ * renameFieldInLatestDocument({
+ *  MONGODB_URI: "mongodb://localhost:27017",
+ * DB_NAME: "dbName",
+ * COLLECTION_NAME: "collectionName",
+ * DATE_FIELD: "createdAt",
+ * OLD_FIELD: "oldField",
+ * NEW_FIELD: "newField",
+ * VALIDATION_FIELD: "_id",
+ * });
+ * @example
+ */
 const renameFieldInLatestDocument = async ({
   MONGODB_URI,
   DB_NAME,
@@ -33,6 +41,10 @@ const renameFieldInLatestDocument = async ({
   OLD_FIELD,
   NEW_FIELD,
   VALIDATION_FIELD,
+  options = {
+    noInteractive: false,
+    verbose: true,
+  },
 }: RenameFieldInLatestDocumentOptions): Promise<void> => {
   const uri = MONGODB_URI;
   const dbName = DB_NAME;
@@ -43,6 +55,10 @@ const renameFieldInLatestDocument = async ({
   const validationField = VALIDATION_FIELD;
 
   const client = new MongoClient(uri);
+  let log = console.log;
+  if (!options?.verbose) {
+    log = (_message?: any, ..._optionalParams: any[]) => {};
+  }
 
   try {
     await client.connect();
@@ -60,24 +76,26 @@ const renameFieldInLatestDocument = async ({
 
     if (recentDocument.length > 0) {
       const document = recentDocument[0];
-      console.log(
+      log(
         `Document found with the ${validationField}: ${
           document[`${validationField}`]
         }`
       );
 
-      process.stdout.write("Is the document correct? (yes/no): ");
-      const answer = await askQuestion("Is the document correct? (yes/no): ");
-
+      let answer = "yes";
+      if (!options?.noInteractive) {
+        process.stdout.write("Is the document correct? (yes/no): ");
+        answer = await askQuestion("Is the document correct? (yes/no): ");
+      }
       if (answer.toLowerCase() === "yes" || answer.toLowerCase() === "y") {
         await collection.updateOne(
           { _id: document._id },
           { $rename: { [oldField]: newField } }
         );
 
-        console.log("Field renamed successfully.");
+        log("Field renamed successfully.");
       } else {
-        console.log("The document is not correct.");
+        log("The document is not correct.");
       }
     } else {
       console.log("No document found.");
