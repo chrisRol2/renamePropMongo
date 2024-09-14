@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build bundle
-        run: npm run build:bundle
+        run: npm run build
 
       - name: Publish to npm
         run: |
