@@ -8,6 +8,20 @@ The `VALIDATION_FIELD` is used to validate the document before renaming the fiel
 To make the application work properly, you need to add the following environment variables to your `.zshrc` or `.bashrc` file:
 
 
+```ts
+import { renameFieldInLatestDocument } from "rename-prop-mongo";
+
+await renameFieldInLatestDocument({
+    MONGODB_URI: "mongodb://localhost:27017",
+    DB_NAME: "test",
+    COLLECTION_NAME: "test",
+    DATE_FIELD: "date",
+    OLD_FIELD: "old",
+    NEW_FIELD: "new",
+    VALIDATION_FIELD: "validation",
+  });
+```
+
 
 ```shell
 export MONGODB_URI=mongodb://localhost:27017
@@ -45,3 +59,5 @@ commandLine
 
 
 Make sure to replace `localhost:27017` with the appropriate MongoDB URI if your database is hosted elsewhere.
+
+

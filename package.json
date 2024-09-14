@@ -1,10 +1,11 @@
 {
   "name": "rename-prop-mongo",
-  "version": "0.0.12",
+  "version": "0.1.0",
   "description": "Rename a property in a MongoDB collection",
-  "main": "./build/bundle/main.js",
+  "main": "./build/lib/index.js",
+  "types": "./build/lib/index.d.ts",
   "bin": {
-    "rename-prop-mongo": "build/bundle/main.js"
+    "rename-prop-mongo": "build/main.js"
   },
   "scripts": {
     "test": "echo \"crea test pls\"",
@@ -12,10 +13,12 @@
     "lint": "ts-standard",
     "tsc": "tsc",
     "start": "node build/build/main.js",
-    "build": "tsc --build tsconfig.json",
     "build:watch": "tsc --build tsconfig.json --watch",
-    "build:bundle": "tsc --build tsconfig.json && esbuild ./build/build/main.js --bundle --outfile=./build/bundle/main.js --minify --allow-overwrite --platform=node --target=node16",
-    "clean": "make clean"
+    "clean": "make clean",
+    "build": "tsc --build tsconfig.json",
+    "build:bundle_cli": "tsc --build tsconfig.json && esbuild ./build/main.js --bundle --outfile=./build/bundle/main.js --minify --allow-overwrite --platform=node --target=node16",
+    "build:bundle_lib": "tsc --build tsconfig.json && esbuild ./build/lib/index.js --bundle --outfile=./build/bundle/lib.js --minify --platform=node --target=node22",
+    "build:bundle": "npm run build:bundle_cli && npm run build:bundle_lib"
   },
   "repository": {
     "type": "git",
@@ -25,7 +28,21 @@
     "typescript",
     "nodejs",
     "esbuild",
-    "mongodb"
+    "mongodb",
+    "rename",
+    "property",
+    "collection",
+    "database",
+    "cli",
+    "command",
+    "line",
+    "interface",
+    "tool",
+    "utility",
+    "program"
+  ],
+  "files": [
+    "build/**/*"
   ],
   "author": "ChrisRol",
   "license": "CC-BY-ND-4.0",
@@ -40,6 +57,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.35",
+    "@types/yargs": "^17.0.33",
     "esbuild": "^0.15.7",
     "nodemon": "2.0.16",
     "ts-node": "10.8.0",

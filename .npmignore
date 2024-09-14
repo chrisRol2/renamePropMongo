@@ -1,7 +1,5 @@
 .env
 .github/
-build/build/
-build/build/main.js
 nodemon.json
 Makefile
 .env.export
